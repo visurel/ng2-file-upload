@@ -300,14 +300,14 @@ export class FileUploader {
      form.append(key, value);
      });
      });*/
-    if (typeof item._file.size !== 'number') {
-      throw new TypeError('The file specified is no longer valid');
+    if (typeof item._documentFileWidget.size !== 'number') {
+      throw new TypeError('The documentFileWidget specified is no longer valid');
     }
     if (!this.options.disableMultipart) {
       sendable = new FormData();
       this._onBuildItemForm(item, sendable);
 
-      sendable.append(item.alias, item._file, item.file.name);
+      sendable.append(item.alias, item._documentFileWidget, item.documentFileWidget.name);
 
       if (this.options.additionalParameter !== undefined) {
         Object.keys(this.options.additionalParameter).forEach((key:string) => {
@@ -315,7 +315,7 @@ export class FileUploader {
         });
       }
     } else {
-      sendable = item._file;
+      sendable = item._documentFileWidget;
     }
 
     xhr.upload.onprogress = (event:any) => {

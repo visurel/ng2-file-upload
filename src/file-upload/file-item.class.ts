@@ -2,8 +2,8 @@ import { FileLikeObject } from './file-like-object.class';
 import { FileUploader, ParsedResponseHeaders, FileUploaderOptions } from './file-uploader.class';
 
 export class FileItem {
-  public file:FileLikeObject;
-  public _file:File;
+  public documentFileWidget:FileLikeObject;
+  public _documentFileWidget:File;
   public alias:string;
   public url:string = '/';
   public method:string;
@@ -29,11 +29,11 @@ export class FileItem {
     this.uploader = uploader;
     this.some = some;
     this.options = options;
-    this.file = new FileLikeObject(some);
-    this._file = some;
+    this.documentFileWidget = new FileLikeObject(some);
+    this._documentFileWidget = some;
     if (uploader.options) {
       this.method = uploader.options.method || 'POST';
-      this.alias = uploader.options.itemAlias || 'file';
+      this.alias = uploader.options.itemAlias || 'documentFileWidget';
     }
     this.url = uploader.options.url;
   }
